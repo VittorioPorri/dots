@@ -1,0 +1,83 @@
+format = '''
+[╭╴](238)$username$hostname$directory$git_branch$git_status$git_commit$python$java$battery
+[╰─](238)$character '''
+
+# disable line break
+[line_break]
+disabled = true
+
+[username]
+style_user = "bold blue"
+style_root = "bold 202"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[$hostname](bold purple) '
+trim_at = "."
+disabled = true
+
+# configue directory
+[directory]
+format = "[$path]($style)"
+style = "green bold"
+truncation_length = 3
+truncate_to_repo=false
+
+
+[character]
+error_symbol = "[✗](bold red)"
+
+[cmd_duration]
+disabled = true
+
+[java]
+symbol = "  "
+format = '[${symbol}java]($style)'
+style = 'red dimmed'
+detect_extensions = ['java', 'class', 'gradle', 'jar', 'cljs', 'cljc']
+
+[python]
+symbol = " </> "
+format = '[${symbol}python]($style)'
+style = "bold blue"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+detect_extensions = ["py"]
+
+[c]
+symbol = " ☠ "
+format = '[${symbol}C]($style)'
+style  = "bold yellow"
+commands = [ [ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ] ]
+detect_extensions = ["c","h"]
+
+[lua]
+symbol = " ☾ "
+format = '[${symbol}lua]($style)'
+style = "bold blue"
+detect_files = ['.lua-version']
+
+[git_branch]
+symbol = "  "
+format = '[${symbol}branch]($style)'
+style = "bold purple"
+
+[git_status]
+# $all status$ahead_behind
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold red"
+conflicted = " = "
+ahead =	" ⇡ "
+behind = " ⇣ "
+diverged = " ⇕ "
+up_to_date = ""
+untracked = " ? "
+stashed = " $ "
+modified = " ! "
+staged = " + "
+renamed = " » "
+deleted = " ✘ "
+
